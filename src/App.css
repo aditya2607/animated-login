@@ -1,38 +1,98 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600&family=Dosis:wght@400;500;600&family=Teko:wght@400;500;600&display=swap');
+body {
+  height: 100vh;
+  background: linear-gradient(90deg,#e52e71,#ff8a00);
+  font-family: 'Chakra Petch', sans-serif;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#root, .slider-thumb{
+  height: 100%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.slider-thumb{
+  display: flex;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.slider-thumb::before {
+	content: "";
+	width: 550px;
+	height: 550px;
+	background: #17141d;
+	border-radius: 62% 47% 82% 35% / 45% 45% 80% 66%;
+	will-change: border-radius, transform, opacity;
+	animation: sliderShape 5s linear infinite;
+	display: block;
+	z-index: -1;
+	-webkit-animation: sliderShape 5s linear infinite;
+  margin: auto;
+}
+.form-group{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  position: absolute;
+  top: calc( (100vh / 2) - (440px / 2) - 15px );
+  left: calc( (100vw / 2) - (388px / 2));
+  padding:20px;
   color: white;
+  height: 400px;
 }
-
-.App-link {
-  color: #61dafb;
+.heading{
+  margin-bottom: 40px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.form-group label{
+  display: block;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.form-item{
+  padding: 0 20px 20px;
+}
+.form-item input{
+  height: 40px;
+  border: 2px solid black;
+  width: 300px;
+  font-size: 16px;
+}
+.form-item input:active, input:focus, input:focus-visible{
+  outline: none;
+  border-radius: 0;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #e52e71, #ff8a00);
+}
+.form-group button{
+  border: none;
+  height: 45px;
+  padding: 0 50px;
+  background: #16141d;
+  font-weight: 500;
+  color: white;
+  margin-top: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  font-family: 'Chakra Petch', sans-serif;
+  border: 2px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(to left, #e52e71, #ff8a00);
+}
+.form-group button:hover{
+  color:#f25f49;
+}
+@keyframes sliderShape{
+  0%,100%{
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
   }
-  to {
-    transform: rotate(360deg);
+  34%{
+      border-radius: 70% 30% 46% 54% / 30% 29% 71% 70%;
+    transform:  translate3d(0,5px,0) rotateZ(0.01deg);
+  }
+  50%{
+    transform: translate3d(0,0,0) rotateZ(0.01deg);
+  }
+  67%{
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60% ;
+    transform: translate3d(0,-3px,0) rotateZ(0.01deg);
   }
 }
